@@ -1,7 +1,6 @@
 <template>
 	<div id="app">
 		<todo-header></todo-header>
-
 		<todo-input></todo-input>
 		<todo-list></todo-list>
 		<todo-footer></todo-footer>
