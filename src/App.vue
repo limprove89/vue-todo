@@ -5,6 +5,7 @@
 		<todo-list
 			v-bind:propsdata="todoItems"
 			v-on:removeItem="removeOneItem"
+			v-on:toggleItem="toggleOneItem"
 		></todo-list>
 		<todo-footer></todo-footer>
 	</div>
@@ -24,13 +25,19 @@ export default {
 	},
 	methods: {
 		addOneItem: function(todoItem) {
-			var obj = { completed: false, item: todoItem };
+			var obj = { item: todoItem, completed: false };
 			localStorage.setItem(todoItem, JSON.stringify(obj));
 			this.todoItems.push(obj);
 		},
 		removeOneItem: function(todoItem, index) {
 			localStorage.removeItem(todoItem.item);
 			this.todoItems.splice(index, 1);
+		},
+		toggleOneItem: function(todoItem, index) {
+			console.log(todoItem, index);
+			todoItem.completed = !todoItem.completed;
+			localStorage.removeItem(todoItem.item);
+			localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
 		},
 	},
 	created: function() {
