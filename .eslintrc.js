@@ -28,6 +28,7 @@ module.exports = {
           arrowParens: 'avoid',
         },
       ],
-      'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+      'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+      'no-unused-vars': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
     },
   };
